@@ -5,7 +5,7 @@ import {
 	Image,
 	StyleSheet,
 	SafeAreaView
-} from 'react-native'
+} from 'react-native';
 
 function Header(props){
 	return(
@@ -22,7 +22,7 @@ function Header(props){
 				</View>
 			</SafeAreaView>
 		</View>
-	)
+	);
 }
 
 const styles=StyleSheet.create({
