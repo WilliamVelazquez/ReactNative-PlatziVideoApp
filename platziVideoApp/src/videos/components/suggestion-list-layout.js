@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-function SuggestionListLayout(props) {
+function SuggestionListLayout(props){
   return(
     <View style={styles.container}>
       <Text style={styles.title}>{props.title}</Text>
