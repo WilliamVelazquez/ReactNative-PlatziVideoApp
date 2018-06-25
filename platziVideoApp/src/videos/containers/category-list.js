@@ -7,10 +7,12 @@ import Layout from '../components/category-list-layout';
 import Empty from '../components/empty';
 import Separator from '../../sections/components/horizontal-separator';
 import Category from '../components/category';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 function mapStateToProps(state){
-  debugger;
+  return {
+    list: state.categoryList
+  };
 }
 
 class CategoryList extends Component{
