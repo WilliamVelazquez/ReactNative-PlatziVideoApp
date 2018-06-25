@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {store,persistor} from './src/store';
 
-import Loader from './src/sections/components/loader'
+import Loader from './src/sections/components/loader';
 import AppLayout from './src/app';
 
 type Props = {};
