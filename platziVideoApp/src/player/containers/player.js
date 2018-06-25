@@ -8,26 +8,39 @@ import {
 import Layout from '../components/player-layout';
 import ControlLayout from '../components/control-layout';
 import PlayPause from '../components/play-pause';
+import FullScreen from '../components/full-screen';
 
 class Player extends Component {
   state = {
     loading: true,
-    paused: false
+    paused: false,
+    inFullScreen: false
   }
   onBuffer = ({isBuffering}) => {
     this.setState({
       loading: isBuffering
-    })
+    });
   }
   onLoad = () => {
     this.setState({
       loading: false
-    })
+    });
   }
   playPause = () => {
     this.setState({
       paused: !this.state.paused
-    })
+    });
+  }
+  setPlayer = (ref) => {
+    this.player = ref;
+  }
+  fullScreen = () => {
+    !this.state.inFullScreen ?
+    this.player.presentFullscreenPlayer()
+    :this.player.dismissFullscreenPlayer();
+    this.setState({
+      inFullScreen: !this.state.inFullScreen
+    });
   }
   render(){
     return(
@@ -41,6 +54,7 @@ class Player extends Component {
             onBuffer={this.onBuffer}
             onLoad={this.onLoad}
             paused={this.state.paused}
+            ref={this.setPlayer}
           />
         }
         loader={
@@ -55,6 +69,10 @@ class Player extends Component {
             <Text>Progress bar |</Text>
             <Text>time left |</Text>
             <Text>full screen</Text>
+            <FullScreen
+              onPress={this.fullScreen}
+              inFullScreen={this.state.inFullScreen}
+            />
           </ControlLayout>
         }
       />      
