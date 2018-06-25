@@ -1,9 +1,22 @@
 import {createStore} from 'redux';
-import reducer from './reducers/videos';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import rootReducer from './reducers/videos';
 
-const store = createStore(reducer, {
-  suggestionList: [],
-  categoryList: []
-});
+// const store = createStore(reducer, {
+//   suggestionList: [],
+//   categoryList: []
+// });
 
-export default store;
+const persistConfig = {
+  key: 'root',
+  storage
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(persistedReducer)
+const persistor = persistStore(store)
+
+// export default store;
+export { store, persistor };
